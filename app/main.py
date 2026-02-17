@@ -18,12 +18,11 @@ class CarWashStation:
         average_rating: float,
         count_of_ratings: int
     ) -> None:
-        # Захист від ZeroDivisionError при ініціалізації
         self.distance_from_city_center = (
-            distance_from_city_center if distance_from_city_center != 0 else 1.0
+            distance_from_city_center if distance_from_city_center != 0
+            else 1.0
         )
         self.clean_power = clean_power
-        # Округлення рейтингу відразу при створенні об'єкта
         self.average_rating = round(average_rating, 1)
         self.count_of_ratings = count_of_ratings
 
@@ -36,7 +35,6 @@ class CarWashStation:
         return round(result_amount, 1)
 
     def calculate_washing_price(self, car: Car) -> float:
-        """Calculate price if car needs washing, else return 0.0."""
         if car.clean_mark < self.clean_power:
             price = (
                 car.comfort_class
